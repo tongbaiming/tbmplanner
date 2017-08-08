@@ -1,0 +1,6 @@
+#Header header
+float64[] x
+int pointsNumber
+int pointSize
+-------
+float64 gain

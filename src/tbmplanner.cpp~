@@ -115,8 +115,9 @@ void tbm::tbmPlanner::odomCallback(const nav_msgs::Odometry& odome)
 	tf::vector3MsgToTF(odome.twist.twist.angular, twistAngularTF);
 	tf::Vector3 twistLinearTF_trans = transform * twistLinearTF;
 	tf::Vector3 twistAngularTF_trans = transform * twistAngularTF;
-	tf::vector3TFToMsg(twistLinearTF_trans, odome_trans.twist.twist.linear);
-	tf::vector3TFToMsg(twistAngularTF_trans, odome_trans.twist.twist.angular);
+	odome_trans.twist.twist.linear = twistLinearTF_trans;
+	odome_trans.twist.twist.angular = twistAngularTF_trans;
+
 	matlabOdome_pub_.publish(odome_trans);
 	ready_=true;
 }

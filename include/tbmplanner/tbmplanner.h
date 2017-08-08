@@ -18,6 +18,7 @@
 #include <tbmplanner/tbmplanner_srv.h>
 #include <tbmplanner/matlabsolver_srv.h>
 #include <tbmplanner/gain_srv.h>
+#include <tbmplanner/gain_full_srv.h>
 #include "std_msgs/String.h"
 #include <cmath>
 //#include "engine.h"
@@ -77,6 +78,7 @@ namespace tbm
 		ros::NodeHandle nh_private_;
 		ros::ServiceServer plannerService_;
 		ros::ServiceServer matlabGainService_;
+		ros::ServiceServer matlabGainFullService_;
 		ros::ServiceClient matlabSolver_;
 		ros::Subscriber pointcloud_sub_;
 		Params params_;
@@ -95,7 +97,9 @@ namespace tbm
 		 bool plannerCallback(tbmplanner::tbmplanner_srv::Request& req, tbmplanner::tbmplanner_srv::Response& res);
 		 void insertPointcloudWithTf(const sensor_msgs::PointCloud2::ConstPtr& pointcloud);
 		 bool gainCallback(tbmplanner::gain_srv::Request& req, tbmplanner::gain_srv::Response& res);
+		 bool gainFullCallback(tbmplanner::gain_full_srv::Request& req, tbmplanner::gain_full_srv::Response& res);
 		 void setStateFromOdometryMsg(const nav_msgs::Odometry& pose);
+		 double  coculateGain(tbmplanner::point_msg pointMsg);
 	};
 }
 

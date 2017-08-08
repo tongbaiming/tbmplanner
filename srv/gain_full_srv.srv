@@ -1,0 +1,6 @@
+#Header header
+tbmplanner/point_msg[] points
+int32 pointsNumber
+int32 pointSize
+-------
+float64 gain
